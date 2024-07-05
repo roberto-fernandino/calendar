@@ -1,27 +1,32 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
-import { getMonth } from "../../lib/util";
+import { getMonth, getMonthString } from "../../lib/util";
 
-export default function Header({ month, func, monthNumber, setNumber }) {
+export default function Header({ month, func, setNumber, setMonthString }) {
+
+  const updateMonth = useCallback((direction) => {
+    setNumber((prevNumber) => {
+      const newNumber = prevNumber + direction;
+      func(getMonth(newNumber));
+      setMonthString(getMonthString(newNumber));
+      console.log(newNumber);
+      return newNumber;
+    });
+  }, [func, setNumber, setMonthString]);
+
   return (
     <>
       <main className="flex justify-center w-screen">
         <div className="flex flex-row justify-between w-screen">
           <CaretLeft
             size={32}
-            onClick={() => {
-              setNumber(monthNumber - 1);
-              func(getMonth(monthNumber));
-            }}
+            onClick={() => updateMonth(-1)}
             className="cursor-pointer"
           />
-          <p>Calendar {monthNumber}</p>
+          <p>Calendar {month}</p>
           <CaretRight
             size={32}
-            onClick={() => {
-              setNumber(monthNumber + 1);
-              func(getMonth(monthNumber));
-            }}
+            onClick={() => updateMonth(1)}
             className="cursor-pointer"
           />
         </div>
