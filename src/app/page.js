@@ -1,28 +1,32 @@
-"use client"; // This is a client component 👈🏽
+"use client"; 
 import { useState } from "react";
-import { getMonth } from "../../lib/util";
+import { getMonth, getMonthString } from "../../lib/util";
 import Month from "@/components/Month";
 import Header from "@/components/Header";
 import dayjs from "dayjs";
-
+import { EventModal } from "@/components/Modal";
 /* @client */
 export default function Home() {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const [monthNumber, setMonthNumber] = useState(dayjs().month() + 1);
+  const [monthString, setMonthString] = useState(getMonthString());
+  const [monthNumber, setMonthNumber] = useState(dayjs().month());
+  const [isEventModalOpen, setEventModalOpen] = useState(false);
 
   return (
     <>
       <main className="h-screen flex flex-col">
         <Header
-          month={currentMonth}
+          month={monthString}
           func={setCurrentMonth}
           setNumber={setMonthNumber}
+          setMonthString={setMonthString}
           monthNumber={monthNumber}
         />
         <div className="flex flex-1">
-          <Month month={currentMonth} />
+          <Month month={currentMonth} setEventModalOpen={setEventModalOpen}/>
+          <EventModal isOpen={isEventModalOpen} onClose={() => setEventModalOpen(false)}/>
         </div>
       </main>
     </>
   );
-}
+} 
