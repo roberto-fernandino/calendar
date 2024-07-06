@@ -1,18 +1,26 @@
 import React, { useCallback } from "react";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
-import { getMonth, getMonthString } from "../../lib/util";
+import { getMonth } from "../../lib/util";
 
-export default function Header({ month, func, setNumber, setMonthString }) {
-
-  const updateMonth = useCallback((direction) => {
-    setNumber((prevNumber) => {
-      const newNumber = prevNumber + direction;
-      func(getMonth(newNumber));
-      setMonthString(getMonthString(newNumber));
-      console.log(newNumber);
-      return newNumber;
-    });
-  }, [func, setNumber, setMonthString]);
+export default function Header({
+  setCurrentMonth,
+  setMonthString,
+  currentDate,
+  setCurrentDate,
+  setCurrentYear,
+}) {
+  const updateMonth = useCallback(
+    (direction) => {
+      setCurrentDate((prevDate) => {
+        const newDate = prevDate.add(direction, "month");
+        const month = getMonth(newDate.month(), newDate.year());
+        setCurrentMonth(month);
+        setCurrentYear(newDate.year());
+        return newDate;
+      });
+    },
+    [setCurrentMonth, setMonthString]
+  );
 
   return (
     <>
@@ -23,7 +31,9 @@ export default function Header({ month, func, setNumber, setMonthString }) {
             onClick={() => updateMonth(-1)}
             className="cursor-pointer"
           />
-          <p>Calendar {month}</p>
+          <p className="select-none">
+            Calendar {currentDate.format("MMMM YYYY")}
+          </p>
           <CaretRight
             size={32}
             onClick={() => updateMonth(1)}
