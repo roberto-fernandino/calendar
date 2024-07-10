@@ -28,7 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 This project was created by [Roberto Fernandino](https://github.com/roberto-fernandino).
 
-![Roberto Fernandino](https://avatars.githubusercontent.com/u/roberto-fernandino?v=4)
+
 
 - 🔧 Backend Developer.
 - 📧 Email roberto.fernandino@gmail.co
