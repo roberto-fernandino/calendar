@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
-export default function Day({ day, idx, handleEventModalOpen }) {
+export default function Day({
+  day,
+  idx,
+  handleEventModalOpen,
+  handleEventModalInfoOpen,
+}) {
   const [events, setEvents] = useState([]);
 
   function getCurrentDayClass() {
@@ -31,6 +36,8 @@ export default function Day({ day, idx, handleEventModalOpen }) {
     });
   }, [events, day]);
 
+  function openEventModal(event) {}
+
   return (
     <div className="flex flex-col justify-start items-center border-[1px] border-gray-200 ">
       {idx === 0 && <div className="p-2"> {day.format("dddd")} </div>}
@@ -50,7 +57,8 @@ export default function Day({ day, idx, handleEventModalOpen }) {
                 <div
                   id={`${event.date}-${idx}`}
                   key={idx}
-                  className={`p-2 rounded-md bg-[${event.color}] text-sm flex flex-row items-center justify-between w-full`}
+                  className={`p-2 rounded-md bg-[${event.color}] text-sm flex flex-row items-center justify-between w-full cursor-pointer`}
+                  onClick={() => handleEventModalInfoOpen(event)}
                 >
                   {event.title}
                   {event.icon && (
