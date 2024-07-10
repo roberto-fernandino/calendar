@@ -31,5 +31,5 @@ This project was created by [Roberto Fernandino](https://github.com/roberto-fern
 
 
 - 🔧 Backend Developer.
-- 📧 Email roberto.fernandino@gmail.co
+- 📧 Email romfernandino@gmail.com
 - 💼 LinkedIn [@robertofernandino](https://www.linkedin.com/in/robertofernandino/)
