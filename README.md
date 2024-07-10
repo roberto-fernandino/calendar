@@ -32,4 +32,4 @@ This project was created by [Roberto Fernandino](https://github.com/roberto-fern
 
 - 🔧 Backend Developer.
 - 📧 Email romfernandino@gmail.com
-- 💼 LinkedIn [@robertofernandino](https://www.linkedin.com/in/robertofernandino/)
+- 💼 LinkedIn [@robertofernandino](https://www.linkedin.com/in/roberto-fernandino-056013296/)
