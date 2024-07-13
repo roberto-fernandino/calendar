@@ -43,7 +43,7 @@ export default function Day({
       {idx === 0 && <div className="p-2"> {day.format("dddd")} </div>}
 
       <p
-        className={`${getCurrentDayClass()} p-3 cursor-pointer hover:bg-gray-700 rounded-full`}
+        className={`${getCurrentDayClass()} p-3 cursor-pointer hover:bg-gray-800 rounded-full`}
         onClick={() => handleEventModalOpen(true, day)}
       >
         {day.format("DD")}
